@@ -1,6 +1,8 @@
 #pragma once
 #include "vector3.h"
 #include "sphere.h"
+#include "display.h"
+#include <cstring>
 
 using color3 = math::vec3;
 
@@ -10,16 +12,10 @@ void RenderPixel(color3 v)
 	fprintf(stdout, "%.f \t%.f \t%.f \n",v[0] * 255.f, v[1] * 255.f, v[2] * 255.f);
 }
 
-
 inline 
-void RenderPPM(int _w)
+void RenderPPM(int imageWidth, int imageHeight)
 {
-	float aspectRatio = 16.0/9.0;
-	unsigned int imageWidth = _w;
-	unsigned int imageHeight = imageWidth / aspectRatio;
-	imageHeight = imageHeight < 1 ? 1 : imageHeight;
-
-	float viewportHeigh = 12.0;
+	float viewportHeigh = 2.0;
 	float viewportWidth = viewportHeigh * (float(imageWidth) / imageHeight);
 
 	auto viewportU = math::vec3(viewportWidth, 0, 0);
@@ -44,12 +40,15 @@ void RenderPPM(int _w)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			auto pixelCenter = pixel00LOC + (i * pixelDeltaU) + (j * pixelDeltaV);
+			auto pixelCenter = pixel00LOC + (j * pixelDeltaU) + (i * pixelDeltaV);
 			auto rayDirection = pixelCenter - cameraCenter;
 			ray r(cameraCenter, rayDirection);
 			sphere sp(math::double3(0, 0, -1), 0.5f);
 			color3 pixel = sp.color(r);
-			RenderPixel(pixel);
+			// fprintf(stderr, "pixel color: %u\n", (i * imageHeight + j));
+			framebuffer[i*imageHeight + j] = color3(pixel.X(), pixel.Y(), pixel.Z());
+			// RenderPixel(pixel);
 		}
 	}
+	drawFrame();
 }

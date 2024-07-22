@@ -16,8 +16,9 @@ struct sphere : public hittable
 		if(discriminant < 0)
 			return false;
 		
-		auto retuned = (h - std::sqrt(discriminant)) / a;
-		info_.t = retuned;
+		info_.t = (h - std::sqrt(discriminant)) / a;
+		info_.mPoint = _r.at(info_.t);
+		info_.mNormal = (info_.mPoint - center) / radius;
 		return true;
 	}
 
