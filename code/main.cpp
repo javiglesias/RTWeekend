@@ -1,4 +1,4 @@
-#include "color.h"
+#include "display.h"
 #include <cstdlib>
 
 // void InitFrameBuffer(unsigned int _w, unsigned int _h);
@@ -17,7 +17,7 @@ int main(int args, char** argv)
 		imageHeight = imageHeight < 1 ? 1 : imageHeight;
 	}
 	InitFrameBuffer(imageWidth, imageHeight);
-	RenderPPM(imageWidth, imageHeight);
+	drawFrame();
 	// memcpy(framebuffer, render, sizeof(color3) * imageWidth * imageHeight);
 	CleanFrameBuffer();
 	return 1;
