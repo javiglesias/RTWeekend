@@ -1,10 +1,6 @@
 #pragma once
 
-namespace math
+float lerp(float _a, float _b, float _alpha)
 {
-	inline
-	float lerp(float _a, float _b, float _alpha)
-	{
-		return (1-_alpha) * _a + _alpha * _b;
-	}
+	return (1-_alpha) * _a + _alpha * _b;
 }
