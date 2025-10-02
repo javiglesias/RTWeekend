@@ -1,0 +1,1 @@
+clang -lX11 -g -Wl,--dependency-file=CMakeFiles/RTWeekend.dir/link.d CMakeFiles/RTWeekend.dir/code/main.c.o -o RTWeekend

@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/unframed/dev/RTWeekend/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,3 @@
+/home/unframed/dev/RTWeekend/CMakeFiles/RTWeekend.dir
+/home/unframed/dev/RTWeekend/CMakeFiles/edit_cache.dir
+/home/unframed/dev/RTWeekend/CMakeFiles/rebuild_cache.dir
